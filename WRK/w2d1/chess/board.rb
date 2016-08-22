@@ -85,7 +85,7 @@ class Board
       end
     end
 
-    p (grid[0][4]).moves
+    p (grid[1][3]).moves
   end
 
 
