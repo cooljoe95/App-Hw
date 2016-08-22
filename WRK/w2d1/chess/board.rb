@@ -5,7 +5,7 @@ require_relative 'pawn'
 require_relative 'queen'
 require_relative 'king'
 require_relative 'bishop'
-#require_relative 'null_piece'
+require_relative 'null_piece'
 
 
 class Board
@@ -76,6 +76,12 @@ class Board
 
     8.times do |n|
       grid[6][n] = Pawn.new(:white, self, [6, n])
+    end
+
+    (2..5).each do |i|
+      8.times do |j|
+        grid[i][j] = NullPiece.new
+      end
     end
 
   end

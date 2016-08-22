@@ -1,6 +1,6 @@
 class NullPiece
 
-  include Singleton
+  #include Singleton
 
   def moves
 
@@ -11,7 +11,7 @@ class NullPiece
   end
 
   def to_s
-    ' '
+    "  "
   end
 
   def empty?
