@@ -1,6 +1,6 @@
 class NullPiece
 
-  #include Singleton
+  # include Singleton
 
   def moves
 

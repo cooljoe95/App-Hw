@@ -13,7 +13,7 @@ class Display
   end
 
   def move(new_pos)
-    system('clear')
+    # system('clear')
     loop do
       render
       j = self.cursor.get_input

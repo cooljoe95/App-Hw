@@ -1,7 +1,7 @@
 require_relative 'piece'
 
-class King < Piece
-  include Stepable
+class King < SteppingPiece
+  # include Stepable
 
   def symbol
     if color == :black
@@ -13,7 +13,16 @@ class King < Piece
 
   protected
   def move_diffs
-
+    moves = [
+      [-1, -1],
+      [-1, 0],
+      [-1, 1],
+      [0, -1],
+      [0, 1],
+      [1, -1],
+      [1, 0],
+      [1, 1]
+    ]
   end
 
 end

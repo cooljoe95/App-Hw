@@ -78,12 +78,14 @@ class Board
       grid[6][n] = Pawn.new(:white, self, [6, n])
     end
 
+    # nullpiece = Singleton::NullPiece.new
     (2..5).each do |i|
       8.times do |j|
         grid[i][j] = NullPiece.new
       end
     end
 
+    p (grid[0][4]).moves
   end
 
 

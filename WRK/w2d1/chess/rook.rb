@@ -1,7 +1,7 @@
 require_relative 'piece'
 
-class Rook < Piece
-  include Slidable
+class Rook < SlidingPiece
+  # include Slidable
 
   def symbol
     if color == :black
@@ -13,6 +13,11 @@ class Rook < Piece
 
   protected
   def move_dirs
-
+    moves = [
+      [-1, 0],
+      [0, -1],
+      [1, 0],
+      [0, 1]
+    ]
   end
 end

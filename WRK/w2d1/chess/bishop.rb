@@ -1,7 +1,7 @@
 require_relative 'piece'
 
-class Bishop < Piece
-  include Slidable
+class Bishop < SlidingPiece
+  # include Slidable
 
   def symbol
     if color == :black
@@ -13,6 +13,11 @@ class Bishop < Piece
 
   protected
   def move_dirs
-
+    moves = [
+      [-1, -1],
+      [-1, 1],
+      [1, -1],
+      [1, 1]
+    ]
   end
 end
