@@ -65,6 +65,18 @@ class Board
       grid[1][n] = Pawn.new(:black, self, [0, n])
     end
 
+    grid[7][0] = Rook.new(:white, self, [7, 0])
+    grid[7][7] = Rook.new(:white, self, [7, 7])
+    grid[7][1] = Knight.new(:white, self, [7, 1])
+    grid[7][6] = Knight.new(:white, self, [7, 6])
+    grid[7][2] = Bishop.new(:white, self, [7, 2])
+    grid[7][5] = Bishop.new(:white, self, [7, 5])
+    grid[7][3] = Queen.new(:white, self, [7, 3])
+    grid[7][4] = King.new(:white, self, [7, 4])
+
+    8.times do |n|
+      grid[6][n] = Pawn.new(:white, self, [6, n])
+    end
 
   end
 
