@@ -19,11 +19,12 @@ class Board
   def move(color, start_pos, end_pos)
     # raise StandardError.new('Piece not found') if grid[start_pos].is_a?(NullPiece)
     # # TODO: raise StandardError.new('Cannot make move')
-    self[start_pos].pos = nil unless self[start_pos].is_a?(NullPiece)
-
-    self[end_pos] = self[start_pos]
-    self[start_pos] = NullPiece.new
-    self[end_pos].pos = end_pos
+    #debugger
+    p start_pos
+    p end_pos
+    if self[start_pos].valid_moves.include?(end_pos)
+      move!(start_pos, end_pos)
+    end
   end
 
   def [](pos)
@@ -37,16 +38,21 @@ class Board
   end
 
   def dup
-
+    new_board = Board.new
+    duped_grid = deep_dup(grid, new_board)
+    new_board.grid = duped_grid
+    new_board
   end
 
   def move!(start_pos, end_pos)
-
+    self[start_pos].pos = nil unless self[start_pos].is_a?(NullPiece)
+    self[end_pos] = self[start_pos]
+    self[start_pos] = NullPiece.new
+    self[end_pos].pos = end_pos
   end
 
   def in_check?(color)
     king_pos = find_king(color)
-    # p king_pos
     grid.each_with_index do |row, i|
       row.each_with_index do |cell, j|
         if cell.color != color
@@ -68,6 +74,7 @@ class Board
       end
       return true
     end
+    false
   end
 
   def in_bounds?(pos)
@@ -86,9 +93,9 @@ class Board
     grid[0][3] = Queen.new(:black, self, [0, 3])
     grid[0][4] = King.new(:black, self, [0, 4])
 
-    8.times do |n|
-      grid[1][n] = Pawn.new(:black, self, [1, n])
-    end
+    # 8.times do |n|
+    #   grid[1][n] = Pawn.new(:black, self, [1, n])
+    # end
 
     grid[7][0] = Rook.new(:white, self, [7, 0])
     grid[7][7] = Rook.new(:white, self, [7, 7])
@@ -99,18 +106,20 @@ class Board
     grid[7][3] = Queen.new(:white, self, [7, 3])
     grid[7][4] = King.new(:white, self, [7, 4])
 
-    8.times do |n|
-      grid[6][n] = Pawn.new(:white, self, [6, n])
-    end
+    # 8.times do |n|
+    #   grid[6][n] = Pawn.new(:white, self, [6, n])
+    # end
 
     # nullpiece = Singleton::NullPiece.new
-    (2..5).each do |i|
+    (1..6).each do |i|
       8.times do |j|
         grid[i][j] = NullPiece.new
       end
     end
-    grid[2][2] = Bishop.new(:white, self, [2, 2])
-    p (grid[1][3]).valid_moves
+
+    grid[1][4] = Rook.new(:white, self, [1, 4])
+    grid[2][4] = Rook.new(:white, self, [2, 4])
+    # p (grid[1][3]).valid_moves
   end
 
 
@@ -125,6 +134,12 @@ class Board
     end
   end
 
-
+  def deep_dup(arr, new_board)
+    arr.map { |el| el.is_a?(Array) ? deep_dup(el, new_board) : el.class.new(el.color, new_board, el.pos) }
+  end
 
 end
+
+board = Board.new
+#puts board.in_check?(:black)
+board[[2,4]].moves

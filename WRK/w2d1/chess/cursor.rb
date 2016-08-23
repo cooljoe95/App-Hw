@@ -33,10 +33,13 @@ MOVES = {
 class Cursor
 
   attr_reader :cursor_pos, :board
+  attr_accessor :selected, :selected_pos
 
   def initialize(cursor_pos, board)
     @cursor_pos = cursor_pos
     @board = board
+    @selected = false
+    @selected_pos = nil
   end
 
   def get_input
@@ -44,8 +47,7 @@ class Cursor
     begin
       handle_key(key)
     rescue StandardError => e
-      puts e.message
-      sleep(2)
+      retry
     end
   end
 
@@ -83,6 +85,8 @@ class Cursor
   def handle_key(key)
     case key
     when :return, :space
+      @selected = true
+      @selected_pos = @cursor_pos
       @cursor_pos
     when :left, :right, :up, :down
       update_pos(MOVES[key])

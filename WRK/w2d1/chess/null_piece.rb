@@ -1,9 +1,15 @@
 class NullPiece
 
   # include Singleton
+  def initialize(*arg1)
+  end
 
   def moves
     []
+  end
+
+  def valid_moves
+    moves
   end
 
   def color
@@ -15,6 +21,10 @@ class NullPiece
   end
 
   def empty?
+
+  end
+
+  def pos
 
   end
 
