@@ -47,7 +47,7 @@ class Cursor
     begin
       handle_key(key)
     rescue StandardError => e
-      retry
+      puts e.message
     end
   end
 
@@ -102,6 +102,5 @@ class Cursor
     raise StandardError.new('Out of bounds') unless board.in_bounds?(new_pos)
     @cursor_pos = [x + dx, y + dy]
   end
-
 
 end
