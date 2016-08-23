@@ -4,11 +4,7 @@ class Queen < SlidingPiece
   # include Slidable
 
   def symbol
-    if color == :black
-      "\u265B"
-    else
-      "\u2655"
-    end
+    "\u265B"
   end
 
   protected

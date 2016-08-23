@@ -4,11 +4,7 @@ class Bishop < SlidingPiece
   # include Slidable
 
   def symbol
-    if color == :black
-      "\u265D"
-    else
-      "\u2657"
-    end
+    "\u265D"
   end
 
   protected

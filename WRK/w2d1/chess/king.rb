@@ -4,11 +4,9 @@ class King < SteppingPiece
   # include Stepable
 
   def symbol
-    if color == :black
-      "\u265A"
-    else
-      "\u2654"
-    end
+
+    "\u265A"
+
   end
 
   protected

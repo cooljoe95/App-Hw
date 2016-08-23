@@ -3,11 +3,7 @@ require_relative 'piece'
 class Pawn < Piece
 
   def symbol
-    if color == :black
-      "\u265F"
-    else
-      "\u2659"
-    end
+    "\u265F"
   end
 
   def moves

@@ -3,11 +3,7 @@ require_relative 'piece'
 class Knight < SteppingPiece
 
   def symbol
-    if color == :black
       "\u265E"
-    else
-      "\u2658"
-    end
   end
 
   protected

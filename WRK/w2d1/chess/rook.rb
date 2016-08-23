@@ -4,11 +4,11 @@ class Rook < SlidingPiece
   # include Slidable
 
   def symbol
-    if color == :black
+    # if color == :black
       "\u265C"
-    else
-      "\u2656"
-    end
+    # else
+      # "\u2656"
+    # end
   end
 
   protected
