@@ -13,14 +13,17 @@ class Board
 
   def initialize(grid = Array.new(8) { Array.new(8) })
     @grid = grid
-    make_starting_grid
+    make_starting_grid if grid[0][0].nil?
   end
 
   def move(color, start_pos, end_pos)
-    raise StandardError.new('Piece not found') if grid[start_pos].is_a?(NullPiece)
-    # TODO: raise StandardError.new('Cannot make move')
-    grid[end_pos] = grid[start_pos]
-    grid[start_pos] = NullPiece.new
+    # raise StandardError.new('Piece not found') if grid[start_pos].is_a?(NullPiece)
+    # # TODO: raise StandardError.new('Cannot make move')
+    self[start_pos].pos = nil unless self[start_pos].is_a?(NullPiece)
+
+    self[end_pos] = self[start_pos]
+    self[start_pos] = NullPiece.new
+    self[end_pos].pos = end_pos
   end
 
   def [](pos)
@@ -30,7 +33,7 @@ class Board
 
   def []=(pos, piece)
     x, y = pos
-    @grid[pos] = piece
+    grid[x][y] = piece
   end
 
   def dup
@@ -41,8 +44,30 @@ class Board
 
   end
 
-  def checkmate?
+  def in_check?(color)
+    king_pos = find_king(color)
+    # p king_pos
+    grid.each_with_index do |row, i|
+      row.each_with_index do |cell, j|
+        if cell.color != color
+          return true if cell.moves.include?(king_pos)
+        end
+      end
+    end
+    false
+  end
 
+  def checkmate?(color)
+    if in_check?(color)
+      grid.each_with_index do |row, i|
+        row.each_with_index do |cell, j|
+          if cell.color == color
+            return false unless cell.valid_moves.empty?
+          end
+        end
+      end
+      return true
+    end
   end
 
   def in_bounds?(pos)
@@ -62,7 +87,7 @@ class Board
     grid[0][4] = King.new(:black, self, [0, 4])
 
     8.times do |n|
-      grid[1][n] = Pawn.new(:black, self, [0, n])
+      grid[1][n] = Pawn.new(:black, self, [1, n])
     end
 
     grid[7][0] = Rook.new(:white, self, [7, 0])
@@ -84,14 +109,22 @@ class Board
         grid[i][j] = NullPiece.new
       end
     end
-
-    p (grid[1][3]).moves
+    grid[2][2] = Bishop.new(:white, self, [2, 2])
+    p (grid[1][3]).valid_moves
   end
 
 
 
   def find_king(color)
-
+    grid.each_with_index do |row, i|
+      row.each_with_index do |cell, j|
+        if cell.is_a?(King) && cell.color == color
+          return [i,j]
+        end
+      end
+    end
   end
+
+
 
 end

@@ -13,7 +13,7 @@ class Pawn < Piece
   def moves
     dir = forward_dir
     if at_start_row?
-      dir << [2 * dir[0], 0]
+      dir << [2 * dir[0][0], 0]
     end
     final_locs = []
     dir.each do |dx, dy|
@@ -45,7 +45,7 @@ class Pawn < Piece
   end
 
   def side_attacks
-    return [[-1, -1], [-1, 1]] if self.color == :black
-    [[1, -1], [1,1]]
+    return [[1, -1], [1, 1]] if self.color == :black
+    return [[-1, -1], [-1,1]]
   end
 end

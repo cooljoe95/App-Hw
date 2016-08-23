@@ -3,11 +3,11 @@ class NullPiece
   # include Singleton
 
   def moves
-
+    []
   end
 
   def color
-
+    nil
   end
 
   def to_s
