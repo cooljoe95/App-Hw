@@ -17,9 +17,9 @@ class Piece
     # puts 'this was called'
     symbol = (self.symbol.force_encoding('utf-8') + ' ')
     if self.color == :black
-      symbol.colorize(:yellow)
+      symbol.colorize(:black)
     else
-      symbol.colorize(:white)
+      symbol.colorize(:light_white)
     end
   end
 

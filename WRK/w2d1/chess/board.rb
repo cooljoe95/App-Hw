@@ -20,10 +20,10 @@ class Board
     # raise StandardError.new('Piece not found') if grid[start_pos].is_a?(NullPiece)
     # # TODO: raise StandardError.new('Cannot make move')
     #debugger
-    p start_pos
-    p end_pos
     if self[start_pos].valid_moves.include?(end_pos)
       move!(start_pos, end_pos)
+    else
+      false
     end
   end
 
@@ -93,9 +93,9 @@ class Board
     grid[0][3] = Queen.new(:black, self, [0, 3])
     grid[0][4] = King.new(:black, self, [0, 4])
 
-    # 8.times do |n|
-    #   grid[1][n] = Pawn.new(:black, self, [1, n])
-    # end
+    8.times do |n|
+      grid[1][n] = Pawn.new(:black, self, [1, n])
+    end
 
     grid[7][0] = Rook.new(:white, self, [7, 0])
     grid[7][7] = Rook.new(:white, self, [7, 7])
@@ -106,19 +106,19 @@ class Board
     grid[7][3] = Queen.new(:white, self, [7, 3])
     grid[7][4] = King.new(:white, self, [7, 4])
 
-    # 8.times do |n|
-    #   grid[6][n] = Pawn.new(:white, self, [6, n])
-    # end
+    8.times do |n|
+      grid[6][n] = Pawn.new(:white, self, [6, n])
+    end
 
     # nullpiece = Singleton::NullPiece.new
-    (1..6).each do |i|
+    (2..5).each do |i|
       8.times do |j|
         grid[i][j] = NullPiece.new
       end
     end
-
-    grid[1][4] = Rook.new(:white, self, [1, 4])
-    grid[2][4] = Rook.new(:white, self, [2, 4])
+    #
+    # grid[1][4] = Rook.new(:white, self, [1, 4])
+    # grid[2][4] = Rook.new(:white, self, [2, 4])
     # p (grid[1][3]).valid_moves
   end
 
