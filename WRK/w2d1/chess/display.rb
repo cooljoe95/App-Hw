@@ -8,7 +8,6 @@ class Display
 
   def initialize(board)
     @cursor = Cursor.new([0,0], board)
-    @notifications = {}
     @cur_color = :white
     @board = board
   end
@@ -90,11 +89,5 @@ class Display
     puts board.checkmate?(@cur_color) ? 'checkmate!' : ''
   end
 
-  private
-  attr_reader :notifications
 
 end
-
-b = Board.new
-d = Display.new(b)
-d.move([0,0]) ##Do Not Delete, does the running

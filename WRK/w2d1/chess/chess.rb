@@ -1,21 +1,6 @@
-class Chess
+require_relative 'board'
+require_relative 'display'
 
-  attr_accessor :current_player
-
-  def initialize
-    @current_player = :white
-  end
-
-  def play
-
-  end
-
-  def notify_players
-
-  end
-
-  def swap_turn!
-
-  end
-
-end
+b = Board.new
+d = Display.new(b)
+d.move([0,0]) ##Do Not Delete, does the running
