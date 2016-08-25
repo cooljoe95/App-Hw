@@ -1,0 +1,44 @@
+Press any key to benchmark sorts for 5 elements
+                user     system      total        real
+Tot. Merge:    0.000000   0.000000   0.000000 (  0.000141)
+Tot. Bubble:   0.000000   0.000000   0.000000 (  0.001506)
+Avg. Merge:    0.000000   0.000000   0.000000 (  0.000047)
+Avg. Bubble:   0.000000   0.000000   0.000000 (  0.000502)
+
+Press any key to benchmark sorts for 50 elements
+                user     system      total        real
+Tot. Merge:    0.000000   0.010000   0.010000 (  0.001873)
+Tot. Bubble:   0.000000   0.000000   0.000000 (  0.001979)
+Avg. Merge:    0.000000   0.003333   0.003333 (  0.000624)
+Avg. Bubble:   0.000000   0.000000   0.000000 (  0.000660)
+
+Press any key to benchmark sorts for 500 elements
+                user     system      total        real
+Tot. Merge:    0.010000   0.000000   0.010000 (  0.011285)
+Tot. Bubble:   0.130000   0.000000   0.130000 (  0.121848)
+Avg. Merge:    0.003333   0.000000   0.003333 (  0.003762)
+Avg. Bubble:   0.043333   0.000000   0.043333 (  0.040616)
+
+Press any key to benchmark sorts for 5000 elements
+                user     system      total        real
+Tot. Merge:    0.090000   0.000000   0.090000 (  0.088953)
+Tot. Bubble:  11.470000   0.020000  11.490000 ( 11.492285)
+Avg. Merge:    0.030000   0.000000   0.030000 (  0.029651)
+Avg. Bubble:   3.823333   0.006667   3.830000 (  3.830762)
+
+Since an increase 10x of input resulted in a just under 100x
+time increase, I'm expecting the 50000 element array to take
+just under 1200 seconds, or around 18 or so minutes.
+
+Since bubble sort is quadratic, if we estimate 100,000 elements
+I'm assuming it would be 4x the speed of the 50,000 element
+array, so around 70 or so minutes.
+
+And the results were...
+
+Press any key to benchmark sorts for 50000 elements
+                user     system      total        real
+Tot. Merge:    0.970000   0.000000   0.970000 (  0.974017)
+Tot. Bubble: 1190.650000   2.020000 1192.670000 (1193.793057)
+Avg. Merge:    0.323333   0.000000   0.323333 (  0.324672)
+Avg. Bubble: 396.883333   0.673333 397.556667 (397.931019)
