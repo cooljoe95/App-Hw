@@ -6119,3 +6119,44 @@ Completed 200 OK in 22ms (Views: 10.8ms | ActiveRecord: 7.5ms)
   [1m[35mCatRentalRequest Load (1.8ms)[0m  SELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE (cat_id = 1 AND status = 'APPROVED')
   [1m[36mCatRentalRequest Load (0.8ms)[0m  [1mSELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE (cat_id = 1 AND status = 'APPROVED')[0m
   [1m[35m (0.4ms)[0m  ROLLBACK
+
+
+Started GET "/cats" for ::1 at 2016-09-06 19:00:18 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CatsController#index as HTML
+  [1m[35mCat Load (1.4ms)[0m  SELECT "cats".* FROM "cats"
+  Rendered cats/index.html.erb within layouts/application (75.9ms)
+Completed 200 OK in 178ms (Views: 130.2ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/cats/new" for ::1 at 2016-09-06 19:00:26 -0400
+Processing by CatsController#new as HTML
+  Rendered cats/_form.html.erb (1.7ms)
+  Rendered cats/new.html.erb within layouts/application (38.0ms)
+Completed 200 OK in 52ms (Views: 51.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/cats" for ::1 at 2016-09-06 19:04:33 -0400
+Processing by CatsController#create as HTML
+  Parameters: {"cat"=>{"name"=>"", "sex"=>"M", "color"=>"Black", "birth_date"=>"2016-09-06", "description"=>""}}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+Completed 422 Unprocessable Entity in 51ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/cats" for ::1 at 2016-09-06 19:04:42 -0400
+Processing by CatsController#create as HTML
+  Parameters: {"cat"=>{"name"=>"5", "sex"=>"M", "color"=>"Black", "birth_date"=>"2016-09-06", "description"=>"55"}}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (10.5ms)[0m  INSERT INTO "cats" ("birth_date", "color", "name", "sex", "description", "age", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["birth_date", "2016-09-06"], ["color", "Black"], ["name", "5"], ["sex", "M"], ["description", "55"], ["age", 0], ["created_at", "2016-09-06 23:04:42.649134"], ["updated_at", "2016-09-06 23:04:42.649134"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/cats/3
+Completed 302 Found in 32ms (ActiveRecord: 11.7ms)
+
+
+Started GET "/cats/3" for ::1 at 2016-09-06 19:04:42 -0400
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mCat Load (0.4ms)[0m  SELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT 1  [["id", 3]]
+  Rendered cats/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 24ms (Views: 2.3ms | ActiveRecord: 0.4ms)
