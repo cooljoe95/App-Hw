@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Joseph Katz Recipe</title>
+	</head>
+
+	<body>
+		<header>
+			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Appacademylogo.png/175px-Appacademylogo.png" alt="app-academy" />
+
+			<h1>Bacon Wrapped Chicken</h1>
+			<nav>
+				<ul>
+					<li><a href="#Description">Description</a></li>
+					<li><a href="#Ingredients">Ingredients</a></li>
+					<li><a href="#Directions">Directions</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<aside>
+			<a name="Ingredients"/>
+			<h2>Ingredients</h2>
+			<ul>
+				<li>2 boneless, skinless chicken breasts, halved horizontally</li>
+				<li>6 ounces walnut halves</li>
+				<li>8 slices bacon</li>
+				<li>8 ounces crumbled blue cheese</li>
+			</ul>
+		</aside>
+
+		<section>
+
+			<figure>
+				<img src="http://images.media-allrecipes.com/userphotos/600x600/998100.jpg" alt="bacon_chicken" />
+			</figure>
+			<figcaption>
+					<a href="https://en.wikipedia.org/wiki/List_of_bacon_dishes">Bacon Dishes</a>
+			</figcaption>
+
+			<a name="Description"/>
+			<h2>Description</h2>
+			<p>
+				Devilishly good and (almost) paleo-approved!
+				Use the leftover drippings to fry some side-dish veggies, or just drizzle on top of the completed chicken.
+				Go ahead and modify the cheese; any stinky cheese will do.
+				Can also substitute candied walnuts or pecans for standard walnuts for a unique sweet-and-savory flavor.
+			</p>
+
+			<a name="Directions"/>
+			<h2>Directions</h2>
+			<ol>
+				<li>Preheat oven to 350 degrees F (175 degrees C).</li>
+				<li>Pound chicken slices until they are even in thickness and about 1/4-inch thick. Spread blue cheese and walnuts on top of each chicken piece. Roll chicken breasts over filling.</li>
+				<li>Place 2 bacon slices side by side on a work surface. Place each chicken roll at one end of bacon slices and roll bacon around chicken; secure with toothpicks. Repeat with remaining chicken rolls and bacon.</li>
+				<li>Heat a skillet to medium-high heat and cook bacon-wrapped chicken rolls in the hot skillet until the bacon is browned and crisp, 4 to 5 minutes per side. Transfer chicken rolls to preheated oven; bake until chicken is no longer pink in the center and the juices run clear, 25 to 35 minutes.</li>
+			</ol>
+
+		</section>
+
+		<section>
+			<form action="/reviews" method="post">
+				<label for="name">Name</label>
+				<input id="name" type="text" name="name">
+
+				<br>
+				<label for="rating">Rating</label>
+				<input type="radio" name="rating" value="1" checked>1
+				<input type="radio" name="rating" value="2">2
+				<input type="radio" name="rating" value="3">3
+				<input type="radio" name="rating" value="4">4
+				<input type="radio" name="rating" value="5">5
+
+				<br>
+				<label for="expertise">Cooking Expertise</label>
+				<select id="expertise" name="expertise">
+					<option  value="Select Cooking Expertise" disabled = "true" selected="true"> Select Cooking Expertise</option>
+					<option value="Sometimes Cook">Sometimes Cook</option>
+					<option value="Cook Everyday">Cook Everyday</option>
+					<option value="Cooking is a Hobby">Cooking is a Hobby</option>
+					<option value="Professional Chef">Professional Chef</option>
+				</select>
+
+				<br>
+				<label>Review
+				<textarea name="review" rows="8" cols="40">
+				</textarea></label>
+			</form>
+		</section>
+
+		<footer>
+			<p>Original Author: kcfort from AllRecipes.com</p>
+		</footer>
+	</body>
+</html>
