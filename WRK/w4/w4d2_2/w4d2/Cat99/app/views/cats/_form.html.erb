@@ -1,0 +1,39 @@
+<% if cat.persisted? %>
+  <% action_url = cat_url(@cat.id) %>
+  <% button_text = "Edit Cat" %>
+<% else %>
+  <% action_url = cats_url %>
+  <% button_text = "Create Cat" %>
+<% end %>
+
+<form action= "<%= action_url %>" method="POST">
+  <% if cat.persisted? %>
+    <input type="hidden" name = "_method" value = "PATCH">
+  <% end %>
+  Name: <input type = "text" name = "cat[name]" value="<%=@cat.name%>">
+  <br>Sex:
+  <% if @cat.sex == "F" %>
+    <input type = "radio" name = "cat[sex]" value = "F" checked > F
+    <input type = "radio" name = "cat[sex]" value = "M" > M
+  <% else %>
+    <input type = "radio" name = "cat[sex]" value = "F" > F
+    <input type = "radio" name = "cat[sex]" value = "M" checked> M
+  <% end %>
+  <br>
+  Color: <select name = "cat[color]">
+    <option value= "Blank">Select Color</option>
+    <option value = "Brown" <%= "selected" if @cat.color == "Brown" %>>Brown</option>
+    <option value = "Black" <%= "selected" if @cat.color == "Black" %>>Black</option>
+    <option value = "Orange" <%= "selected" if @cat.color == "Orange" %>>Orange</option>
+    <option value = "White" <%= "selected" if @cat.color == "White" %>>White</option>
+  </select>
+  <br>
+  Birth Date:
+  <input type="date" name="cat[birth_date]" value="<%=@cat.birth_date%>">
+  <br>
+  Life Story
+  <br>
+  <textarea name="cat[description]" rows="8" cols="40"><%=@cat.description%></textarea>
+  <br>
+  <input type = "submit" value = "Submit Cat">
+</form>

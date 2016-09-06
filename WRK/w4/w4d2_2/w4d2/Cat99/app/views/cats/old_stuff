@@ -1,0 +1,23 @@
+<!-- <form action= "<%=cats_url%>" method="POST">
+  Name: <input type="text" name="cat[name]">
+  <br>Sex:
+  <input type="radio" name="cat[sex]" value="F"> F
+  <input type="radio" name="cat[sex]" value="M"> M
+  <br>
+  Color: <select name="cat[color]">
+    <option value="Blank">Select Color</option>
+    <option value="Brown" >Brown</option>
+    <option value="Black" >Black</option>
+    <option value="Orange" >Orange</option>
+    <option value="White" >White</option>
+  </select>
+  <br>
+  Birth Date:
+  <input type="date" name="cat[birth_date]" value="<%=Date.today%>">
+  <br>
+  Life Story
+  <br>
+  <textarea name="cat[description]" rows="8" cols="40"></textarea>
+  <br>
+  <input type="submit" value="Submit Cat">
+</form> -->

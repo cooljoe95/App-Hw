@@ -1,0 +1,26 @@
+<h1> Hello Cats </h1>
+
+<ul>
+  <% @cats.each do |cat| %>
+  <ol>
+
+    <table>
+
+      <tr>
+        <% cat.attributes.each do |atr, val| %>
+        <% next if atr =="updated_at" or atr == "created_at" %>
+        <th><%= atr %><th>
+        <% end %>
+      </tr>
+
+      <tr>
+          <% cat.attributes.each do |atr, val| %>
+          <% next if atr =="updated_at" or atr == "created_at" %>
+          <td><%= val %><td>
+          <% end %>
+      </tr>
+    </table>
+  </ol>
+  <br>
+  <% end %>
+</ul>
