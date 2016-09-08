@@ -6,6 +6,8 @@
 </head>
 <body>
   <!-- ... -->
+  <a href="<%= bands_url %>">Home</a>
+  <br>
   <% if !current_user.nil? %>
     <%= button_to "Logout", session_url, method: :delete %>
     Logged in as: <%= current_user.email %>

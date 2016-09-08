@@ -1,0 +1,16 @@
+<h1><%= @album.album_name %></h1>
+
+<p>
+  <%= @album.album_name %> is the next cool album! It's tracks include:
+</p>
+
+<p>
+  Go back to <a href="<%= band_url(@album.band) %>"> <%= @album.band.name %></a>
+</p>
+
+<ul>
+  <% @album.tracks.each do |track| %>
+    <li><%= album.album_name %></li>
+    <!-- <li><a href="<%= album_url(album.id) %>"><%= album.album_name %></a></li> -->
+  <% end %>
+</ul>
