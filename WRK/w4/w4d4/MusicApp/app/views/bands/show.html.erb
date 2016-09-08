@@ -1,0 +1,13 @@
+<a href="<%= bands_url %>">Home</a>
+<br>
+<h1><%= @band.name %></h1>
+
+<p>
+  <%= @band.name %> is GREAT! Their discography includes:
+</p>
+
+<ul>
+  <% @albums.each do |album| %>
+    <li><%= album.album_name %></li>
+  <% end %>
+</ul>

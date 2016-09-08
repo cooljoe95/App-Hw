@@ -1,0 +1,20 @@
+<h1>Welcome to J's music app</h1>
+
+<h3>Current Artists</h3>
+
+<p>
+  Checkout all the hip artists below:
+</p>
+<ol>
+  <% @bands.each do |band| %>
+    <li>
+      <a href="<%= band_url(band) %>">
+        <%= band.name %>
+      </a>
+    </li>
+  <% end %>
+</ol>
+
+<br>
+<br>
+<a href="<%= new_band_url %>">Add an artist</a>
