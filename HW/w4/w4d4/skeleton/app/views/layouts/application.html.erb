@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NinetyNineCatsDay1</title>
+  <%= csrf_meta_tags %>
+</head>
+  <body>
+    <header>
+      <% if current_user %>
+        <form action="<%= session_url %>" method="post">
+          <%= auth_token %>
+          <input type="hidden" name="_method" value="DELETE">
+
+          <%= current_user.username %> is logged in!
+          <input type="submit" value="Logout">
+        </form>
+      <% else %>
+        <form action="<%= new_session_url %>" method="get">
+          <input type="submit" value="Log in">
+        </form>
+      <% end %>
+    </header>
+
+    <form action="<%= cats_url %>" method="GET">
+      <input type="submit" value="Home">
+    </form>
+  <%= yield %>
+
+  </body>
+
+  <footer>
+    This is our 99 Cats site. Please feel free to browse!
+
+    <%= yield :footer %>
+  </footer>
+
+</html>
