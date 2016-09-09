@@ -15,7 +15,7 @@ class BandsController < ApplicationController
     if band.save
       redirect_to band_url(band)
     else
-      flash[:errors] = "Was not able to add it to the screen"
+      flash.now[:errors] = @band.errors.full_messages
       render :new
     end
   end

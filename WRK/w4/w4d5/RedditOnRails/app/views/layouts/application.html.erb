@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RedditOnRails</title>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<form action="<%=subs_url%>" method="get">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"
+  <br>
+  <input type="submit" name="logout" value="Homepage">
+</form>
+
+<% if logged_in? %>
+  <form action="<%=session_url%>" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <br>
+    <%= current_user.username %> is logged in!
+    <input type="submit" name="logout" value="Log Out">
+  </form>
+
+<% else %>
+  <form action="<%= new_session_url %>" method="get">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="submit" name="logout" value="Log In">
+  </form>
+
+  <form action="<%= new_user_url %>" method="get">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="submit" name="create_user" value="Create User Account">
+  </form>
+<% end %>
+
+
+<%= yield %>
+
+</body>
+</html>

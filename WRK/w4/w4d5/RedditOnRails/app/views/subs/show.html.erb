@@ -1,0 +1,21 @@
+<h1> <%= @sub.title %> </h1>
+
+<h4>Description</h4>
+<p>
+  <%= @sub.description %>
+</p>
+
+<% if @sub.posts != [] %>
+  <h4>Posts:</h4>
+  <ul>
+    <% @sub.posts.each do |post| %>
+      <li><a href="<%= post_url(post) %>">post.title</a> by <%= post.author %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<form action="<%= new_sub_post_url(@sub) %>" method="get">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <br>
+  <input type="submit" value="Create a new Post">
+</form>
