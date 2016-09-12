@@ -1,0 +1,24 @@
+<br>
+<br>
+<form action="<%= posts_url %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  Post Title:
+  <br>
+  <input type="text" name="post[title]">
+
+  <br>
+  <h3>URL?</h3>
+  Paste a url if you have one
+  <br>
+  <input type="text" name="post[url]" placeholder="URL">
+
+  <br>
+  <h3>Content</h3>
+  <textarea name="post[content]" rows="8" cols="40"></textarea>
+
+  <input type="hidden" name="post[sub_id]" value="<%= @sub_id %>">
+  <br>
+  <input type="submit">
+
+</form>

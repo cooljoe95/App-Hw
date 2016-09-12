@@ -1,0 +1,13 @@
+<h2>Log in</h2>
+
+<form action="<%=session_url%>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  Username: <input type="text" name="session[username]">
+  <br>
+  Password: <input type="text" name="session[password]">
+  <br>
+  <input type="hidden" name="session[backtrace]" value="<%= @backtrace %>">
+  <br>
+  <input type="submit">
+</form>
