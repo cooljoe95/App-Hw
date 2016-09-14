@@ -14,7 +14,7 @@ class ShowExceptions
       render_exception(e)
       path = "lib/templates/rescue.html.erb"
       html = ERB.new(File.read(path)).result(binding)
-      return ["500", {"Content-type"=>"text/html"}, [html]]
+      return ["500", {"Content-type"=>"text/html"}, [html, @exception.class.to_s]]
     end
   end
 
