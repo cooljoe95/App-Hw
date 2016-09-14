@@ -33,6 +33,7 @@ end
 
 router = Router.new
 router.draw do
+  debugger
   get Regexp.new("^/cats$"), Cats2Controller, :index
   get Regexp.new("^/cats/(?<cat_id>\\d+)/statuses$"), StatusesController, :index
 end

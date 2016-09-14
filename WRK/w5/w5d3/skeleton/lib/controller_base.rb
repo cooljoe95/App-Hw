@@ -12,6 +12,8 @@ class ControllerBase
   def initialize(req, res, params = {})
     @req = req
     @res = res
+    request_params = req.params
+    params.each { |key, value| request_params[key] = value }
     @params = params
   end
 
