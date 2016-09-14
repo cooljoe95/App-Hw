@@ -13,9 +13,10 @@ class SQLObject
         *
       FROM
         #{table_name};
+      --LIMIT 0 to ensure that it does not return records, just the columns
     SQL
-    ar_of_columns = ar_of_columns[0] 
-    ar_of_columns.each_with_index do |el, i|
+    ar_of_columns = ar_of_columns[0] # could have called ".first" on line 11
+    ar_of_columns.each_with_index do |el, i| # map!(&:to_sym) does the same thing
       ar_of_columns[i] = el.to_sym
     end
     @columns = ar_of_columns
@@ -25,7 +26,7 @@ class SQLObject
 
     columns.each do |method|
       method = method.to_s
-      define_method(method){
+      define_method(method){ # I am able to send in a symbol, did not need to make it a string
         self.attributes[method.to_sym]
       }
 
@@ -43,7 +44,7 @@ class SQLObject
 
   def self.table_name
     # ...
-    if @table_name
+    if @table_name # Same could have been done on one line with ||
       @table_name
     else
       self.to_s.tableize
@@ -138,8 +139,6 @@ class SQLObject
     cols = self.class.columns
     col_names = cols.join(" = ?, ").concat(" = ?")
     values =  attribute_values
-    p col_names
-    p values
 
     ar_of_columns = DBConnection.execute(<<-SQL, *values, self.id)
       UPDATE

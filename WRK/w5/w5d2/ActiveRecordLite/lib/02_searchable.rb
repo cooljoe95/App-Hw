@@ -4,7 +4,7 @@ require_relative '01_sql_object'
 module Searchable
   def where(params)
     # ...
-    string = ""
+    string = "" #Can be done in one line if we map the keys, and join them with AND
     vals = []
     params.each do |key, val|
       string.concat("#{key} = ? AND ")
