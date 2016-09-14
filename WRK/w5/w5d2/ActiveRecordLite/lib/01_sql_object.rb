@@ -14,7 +14,7 @@ class SQLObject
       FROM
         #{table_name};
     SQL
-    ar_of_columns = ar_of_columns[0]
+    ar_of_columns = ar_of_columns[0] 
     ar_of_columns.each_with_index do |el, i|
       ar_of_columns[i] = el.to_sym
     end
