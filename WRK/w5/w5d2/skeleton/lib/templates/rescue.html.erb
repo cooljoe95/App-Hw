@@ -1,0 +1,20 @@
+Backtrace: <br> <% @exception.backtrace.each_with_index do |exception, i| %>
+<%= exception %>
+<% path = exception.split(":") if i == 1 %>
+<br>
+<% end %>
+
+<br><br><br>
+
+<% File.readlines(path[0]).each_with_index do |line, i| %>
+
+  <% if i.between?((path[1].to_i-3),(path[1].to_i+3))  %>
+    <%= line %>
+    <br>
+
+  <% end %>
+<% end %>
+
+<br><br><br>
+<%= @exception.message %>
+<br>
