@@ -1,0 +1,14 @@
+class TowersOfHanoi {
+
+  run() {
+
+    until all discs are on the third stack
+      - get from-stack from player
+      - get to-stack from player
+      - make sure move is valid
+        - make move from 'from-stack' to 'to-stack'
+      - ask again
+  
+  }
+
+}
