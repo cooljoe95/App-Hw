@@ -1,0 +1,79 @@
+h1 {
+  text-align: center;
+}
+
+body{
+  font-family: "Comic Sans MS";
+  text-align: center;
+
+}
+
+.selected-tower{
+  border-color: blue;
+}
+
+figure {
+  width: 720px;
+  margin: auto;
+}
+
+ul {
+  width: 200px;
+  float: left;
+  list-style: none;
+  border-bottom: 5px solid red;
+  border-radius: 5px;
+  padding: 0;
+  margin: 20px;
+}
+
+ul:hover{
+  border-color: yellow;
+}
+
+a {
+  font-weight: bold;
+  background-color: antiquewhite;
+  padding: 5px;
+  text-decoration: none;
+  color: inherit;
+  border: 3px ridge pink;
+  clear: both;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+li {
+  margin: auto;
+  height: 100px;
+}
+
+li:nth-child(1) {
+  height: 50px;
+}
+
+li:nth-child(2) {
+  height: 80px;
+}
+
+.disk {
+  background-image: url("/Users/appacademy/Desktop/skeleton/toh/skeleton/css/turtle.jpeg");
+  background-size: 100%;
+  border-radius: 10px;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  height: 100px;
+}
+
+.disk-1 {
+  width: 100px;
+}
+
+.disk-2 {
+  width: 150px;
+}
+
+.disk-3 {
+}
