@@ -1,5 +1,5 @@
 <h2>New Tweet!</h2>
-<form action="/tweets" method="POST">
+<form action="/tweets" method="POST" class="tweet-compose">
   <input
       type="hidden"
       name="authenticity_token"
@@ -7,7 +7,7 @@
 
   <label>
     Content
-    <textarea name="tweet[content]"></textarea>
+    <textarea class="tweet-content" name="tweet[content]"></textarea>
   </label>
   <br>
 
@@ -16,7 +16,7 @@
     <select name="tweet[mentioned_user_ids][]">
       <option></option>
       <% User.all.each do |user| %>
-        <option value="<%= user.id %>"><%= user.username %></option>
+        <option class="hi" value="<%= user.id %>"><%= user.username %></option>
       <% end %>
     </select>
   </label>
