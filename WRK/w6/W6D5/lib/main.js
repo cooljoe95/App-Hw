@@ -1,25 +1,32 @@
 const DOMNodeCollection = require("./dom_node_collection.js");
 
-document.addEventListener("DOMContentLoaded", () => {
-  window.$l = function(element){
+const queue = [];
 
-    // debugger
-    if(typeof element === "string"){
-      return Array.from(document.querySelectorAll(element));
-    } else if (typeof element === 'object') {
-      if(element[0] instanceof HTMLElement){
-        return new DOMNodeCollection(element);
-      }
-    }
+window.$l = function(element){
 
-  };
-
-  let a = $l('button');
-  function sayHi(){
-    console.log("hi");
+  if(typeof element === "function"){
+    queue.push(element);
   }
-  $l(a).on("click", (e)=>sayHi);
-  $l(a).off("click", (e)=>sayHi);
+  document.addEventListener("DOMContentLoaded", () => {
+    for (let i = 0; i < queue.length; i++) {
+      queue.shift()();
+    }
+  });
+  if(typeof element === "string"){
+    return Array.from(document.querySelectorAll(element));
+  } else if (typeof element === 'object') {
+    if(element[0] instanceof HTMLElement){
+      return new DOMNodeCollection(element);
+    }
+  }
+};
+
+$l( () => {
+  let a = $l('button');
+
+  // $l(a).on("click", (e)=>sayHi);
+  // $l(a).off("click", (e)=>sayHi);
+});
   // document.querySelectorAll()
   // debugger
   // console.log($l('ul'));
@@ -41,4 +48,3 @@ document.addEventListener("DOMContentLoaded", () => {
   // $l(a).off("click");
   // let a = $l('div');
   // $l(a).remove('ul');
-});
