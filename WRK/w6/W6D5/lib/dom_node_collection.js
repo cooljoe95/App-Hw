@@ -103,6 +103,18 @@ class DOMNodeCollection {
       });
     });
   }
+
+  on(action, callback) {
+    this.elements.forEach ((el) => {
+      el.addEventListener(action, callback);
+    });
+  }
+
+  off(action, callback){
+    this.elements.forEach((el) => {
+      el.removeEventListener(action, callback);
+    });
+  }
 }
 
 module.exports = DOMNodeCollection;

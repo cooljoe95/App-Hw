@@ -60,6 +60,12 @@
 
 	  };
 
+	  let a = $l('button');
+	  function sayHi(){
+	    console.log("hi");
+	  }
+	  $l(a).on("click", (e)=>sayHi);
+	  $l(a).off("click", (e)=>sayHi);
 	  // document.querySelectorAll()
 	  // debugger
 	  // console.log($l('ul'));
@@ -78,9 +84,9 @@
 	  // console.log($l(c).find('p'));
 	  // debugger
 	  // $l(c).remove('ul');
-
-	  let a = $l('div');
-	  $l(a).remove('ul');
+	  // $l(a).off("click");
+	  // let a = $l('div');
+	  // $l(a).remove('ul');
 	});
 
 
@@ -191,6 +197,18 @@
 	      el.forEach ((subEl) => {
 	        subEl.remove();
 	      });
+	    });
+	  }
+
+	  on(action, callback) {
+	    this.elements.forEach ((el) => {
+	      el.addEventListener(action, callback);
+	    });
+	  }
+
+	  off(action, callback){
+	    this.elements.forEach((el) => {
+	      el.removeEventListener(action, callback);
 	    });
 	  }
 	}
