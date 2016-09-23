@@ -63,13 +63,24 @@
 	  // document.querySelectorAll()
 	  // debugger
 	  // console.log($l('ul'));
-	  let a = $l('ul');
-	  let b = $l(a);
-	  console.log(b.html());
-	  b.html("HI");
-	  b.append(" Bye ");
-	  b.append(a[0]);
-	  // b.empty();
+	  // let a = $l('ul');
+	  // let b = $l(a);
+	  // console.log(b.html());
+	  // b.append(" Bye ");
+	  // b.append(a[0]);
+	  // // b.empty();
+	  // b.addClass("test");
+	  // console.log(b.attr("name"));
+	  // b.removeClass("test");
+	  // let c = $l('div');
+	  // $l(c).append(a[0]);
+	  // console.log(b.children());
+	  // console.log($l(c).find('p'));
+	  // debugger
+	  // $l(c).remove('ul');
+
+	  let a = $l('div');
+	  $l(a).remove('ul');
 	});
 
 
@@ -109,6 +120,77 @@
 	          el.innerHTML += tags[i].outerHTML;
 	        }
 	      }
+	    });
+	  }
+
+	  attr(get, set){
+	    for(let i = 0; i < this.elements.length; i++){
+	      if(typeof set === 'undefined'){
+	        if(this.elements[i].hasAttribute(get)){
+	          return this.elements[i];
+	        }
+	      } else {
+	        this.elements[i].setAttribute(get, set);
+	      }
+	    }
+	  }
+
+	  addClass(className){
+	    for (let i = 0; i < this.elements.length; i++) {
+	      let initialClass = this.elements[i].getAttribute("class");
+	      initialClass = initialClass === null ? className : initialClass + " " + className;
+	      this.elements[i].setAttribute("class", initialClass);
+	    }
+	  }
+
+	  removeClass(className) {
+	    if (typeof className === "undefined") {
+	      this.attr("class", "  ");
+	    } else {
+	      this.elements.forEach ((el) => {
+	        let splitAr = el.getAttribute("class").split(" ");
+	        const classNames = splitAr.splice(splitAr.indexOf(className), 1);
+	        el.setAttribute("class", splitAr);
+	      });
+	    }
+	  }
+
+	  children(){
+	    const children = [];
+
+	    this.elements.forEach ((el) => {
+	      children.push(el.childNodes);
+	    });
+	    return new DOMNodeCollection(children);
+	  }
+
+	  parent() {
+	    const parent = [];
+	    this.elements.forEach ((el) => {
+	      parent.push(el.parentNode);
+	    });
+	    return new DOMNodeCollection(parent);
+	  }
+
+	  find(selector) {
+	    const result = [];
+	    this.elements.forEach ((el) => {
+	      // debugger
+	      const nodes = el.querySelectorAll(selector);
+	      if(nodes.length > 0){
+	        result.push(nodes);
+	      }
+	    });
+	    return new DOMNodeCollection(result);
+	  }
+
+	  remove(selector){
+	    const removeMe = this.find(selector);
+	  // debugger
+	    removeMe.elements.forEach((el) => {
+	      el.forEach ((subEl) => {
+	        subEl.remove();
+	      });
 	    });
 	  }
 	}
