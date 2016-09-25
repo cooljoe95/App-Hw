@@ -48,6 +48,7 @@ end
 class DogsController < ControllerBase
   def create
     @dog = Dog.new(params["dog"])
+    debugger
     if @dog.save
       flash[:notice] = "Saved dog successfully"
       redirect_to "/dogs"

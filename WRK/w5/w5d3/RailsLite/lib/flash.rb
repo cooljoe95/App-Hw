@@ -1,8 +1,9 @@
 require 'json'
-
+require 'byebug'
 class Flash
 
   def initialize(req)
+    debugger
     @req = req
     if req.cookies["_rails_lite_app_flash"]
       # Store the cookies found in the request and interpret using JSON

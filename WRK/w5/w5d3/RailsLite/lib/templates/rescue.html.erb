@@ -1,8 +1,15 @@
-Backtrace: <br> <% @exception.backtrace.each_with_index do |exception, i| %>
-<%= exception %>
+<%= @exception.message %>
+<br><br><br>
+
+Backtrace: <br>
+<ul>
+
+<% @exception.backtrace.each_with_index do |exception, i| %>
+  <li><%= exception %></li>
 <% path = exception.split(":") if i == 1 %>
 <br>
 <% end %>
+</ul>
 
 <br><br><br>
 
@@ -16,5 +23,3 @@ Backtrace: <br> <% @exception.backtrace.each_with_index do |exception, i| %>
 <% end %>
 
 <br><br><br>
-<%= @exception.message %>
-<br>

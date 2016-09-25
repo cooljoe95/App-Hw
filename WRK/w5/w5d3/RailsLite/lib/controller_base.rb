@@ -2,6 +2,7 @@ require 'active_support'
 require 'active_support/core_ext'
 require 'erb'
 require_relative './session'
+require_relative './flash'
 require 'active_support/inflector'
 require 'byebug'
 
@@ -14,7 +15,7 @@ class ControllerBase
     @res = res
     request_params = req.params
     params.each { |key, value| request_params[key] = value }
-    @params = params
+    @params = request_params
   end
 
   # Helper method to alias @already_built_response
@@ -29,6 +30,7 @@ class ControllerBase
     @res.status = 302
     session.store_session(@res)
     @already_built_response = true
+    flash.store_flash(@res)
   end
 
   # Populate the response with content.
@@ -47,6 +49,7 @@ class ControllerBase
   def render(template_name)
     controller_name = self.class.to_s.underscore
     template_name   = template_name.to_s.underscore
+		debugger
     path = "views/#{controller_name}/#{template_name}.html.erb"
     html = ERB.new(File.read(path)).result(binding)
     render_content(html, 'text/html')
@@ -55,6 +58,10 @@ class ControllerBase
   # method exposing a `Session` object
   def session
     @session ||= Session.new(@req)
+  end
+
+  def flash
+    @flash ||= Flash.new(@req)
   end
 
   # use this with the router to call action_name (:index, :show, :create...)
