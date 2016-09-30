@@ -1,20 +1,20 @@
-import * as Session from '../actions/session_actions';
+import * as SessionAction from '../actions/session_actions';
+import { login, signup, logout } from '../util/session_api_util';
 
 export default ({ getState, dispatch }) => next => action => {
-  const success = user => dispatch(Session.receiveCurrentUser(user));
-  const errors = error => dispatch(Session.receiveErrors(error));
+  const success = user => dispatch(SessionAction.receiveCurrentUser(user));
+  const errors = error => dispatch(SessionAction.receiveErrors(error));
 
   switch(action.type){
-
-    case(Session.LOGIN):
+    case(SessionAction.LOGIN):
       login(action.user, success, errors);
       return next(action);
 
-    case(Session.LOGOUT):
+    case(SessionAction.LOGOUT):
       logout(() => next(action));
       break;
 
-    case(Session.SIGNUP):
+    case(SessionAction.SIGNUP):
       signup(action.user, success, errors);
       return next(action);
 
