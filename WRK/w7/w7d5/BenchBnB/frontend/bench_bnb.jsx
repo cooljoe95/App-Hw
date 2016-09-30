@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import configureStore from './store/store';
-import * as SessionAction from './actions/session_actions';
+import { Root } from './components/root';
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
-  window.SessionAction = SessionAction;
-  window.store = configureStore();
+  const store = configureStore();
+  debugger
   ReactDOM.render(
-    <h1>Welcome to BenchBnB</h1>,
+    <Root store={store}/>,
     root
   );
 });
