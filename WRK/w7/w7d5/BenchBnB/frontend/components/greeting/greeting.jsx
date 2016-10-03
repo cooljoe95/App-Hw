@@ -27,12 +27,3 @@ export default class Greeting extends React.Component {
   }
 
 }
-//
-// export default ({ currentUser, logout }) => {
-//   debugger
-//   if (currentUser) {
-//     return personalGreeting(currentUser, logout);
-//   } else {
-//     return sessionLinks();
-//   }
-// }
