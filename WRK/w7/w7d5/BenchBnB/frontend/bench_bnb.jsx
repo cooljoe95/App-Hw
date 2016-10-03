@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.store = store;
   window.requestBenches = BenchAction.requestBenches;
   window.receiveBenches = BenchAction.receiveBenches;
-  
   ReactDOM.render(
     <Root store={store}/>,
     root

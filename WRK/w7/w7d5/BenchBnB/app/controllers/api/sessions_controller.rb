@@ -7,7 +7,7 @@ class Api::SessionsController < ApplicationController
     if user
       login!(user)
     else
-      flash[:errors] = ["Invalid credentials"]
+      flash[:errors] < "Invalid credentials"
       render json: "Invalid Credentials", status: 401
     end
   end
