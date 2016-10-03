@@ -5,6 +5,8 @@ export default ({ getState, dispatch }) => next => action => {
   const success = user => dispatch(SessionAction.receiveCurrentUser(user));
   const errors = error => dispatch(SessionAction.receiveErrors(error));
 
+  // debugger
+
   switch(action.type){
     case(SessionAction.LOGIN):
       login(action.user, success, errors);
