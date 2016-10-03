@@ -3,7 +3,7 @@ import { login, signup } from '../../actions/session_actions';
 import SessionForm from './session_form';
 
 function mapStateToProps(state){
-  
+
   return {
     loggedIn: state.session.currentUser ? true : false,
     errors: [].concat(state.session.errors)

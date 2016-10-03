@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router';
+import { Link, Redirect, hashHistory } from 'react-router';
 
 class SessionForm extends React.Component {
 
@@ -12,6 +12,16 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidUpdate() {
+    this.redirectIfLoggedIn();
+  }
+
+  redirectIfLoggedIn() {
+    if(this.props.loggedIn){
+      hashHistory.push("/");
+    }
+  }
+
   handleSubmit(e) {
     // debugger   
     e.preventDefault();
@@ -20,8 +30,7 @@ class SessionForm extends React.Component {
   }
 
   render(){
-    // debugger
-    //  <div>
+
     let errors = <div></div>;
     if(this.props.errors.length !== 0 && typeof(this.props.errors[0]) !== "undefined"){
       errors = (
@@ -31,13 +40,6 @@ class SessionForm extends React.Component {
       );
     }
 
-    // const errors = {this.props.errors.forEach((er) => {return <p>er.responseText</p>;})}</div>;
-    // debugger
-    //   <div>
-    //     {this.props.errors.forEach((er) => {return <p>er.responseText</p>;})}
-    //   </div>
-    // );
-    // debugger
     return(
       <div>
         <form onSubmit={this.handleSubmit} hidden={this.props.loggedIn}>
@@ -51,6 +53,7 @@ class SessionForm extends React.Component {
         </form>
 
         {errors}
+        HI
       </div>
     );
   }
